@@ -1,22 +1,22 @@
-import { Heroe, HeroeSide } from '../model/heroe.js';
+import { Hero, HeroSide } from '../model/hero.js';
 import { Component } from './base.js';
 import { Draggable } from '../model/drag-and-drop.js';
 import { Bind } from '../decorators/bind.js';
 
 export class SingleHero extends Component<HTMLUListElement, HTMLLIElement> implements Draggable {
    
-    heroe: Heroe
+    hero: Hero
 
-    constructor(hostElementId: string, heroe: Heroe) {
-        super("single-heroe", hostElementId, false);
-        this.heroe = heroe;
+    constructor(hostElementId: string, hero: Hero) {
+        super("single-hero", hostElementId, false);
+        this.hero = hero;
         this.onInit();
         this.render();
     }
 
     @Bind
     dragStartHandler(event: DragEvent): void {
-        event.dataTransfer!.setData("text", this.heroe.id);
+        event.dataTransfer!.setData("text", this.hero.id);
         this.hostEl.classList.add("dragging");
         this.element.classList.add("dragging");
 
@@ -36,7 +36,7 @@ export class SingleHero extends Component<HTMLUListElement, HTMLLIElement> imple
     
     protected render(): void {
         // add element to dom
-        this.element.querySelector("h3")!.innerText = this.heroe.name;
-        this.element.querySelector("p")!.innerText = `Powers: \n${this.heroe.description}\n${this.heroe.side === HeroeSide.LIGHT ? "LIGHT" : "DARK"}`;
+        this.element.querySelector("h3")!.innerText = this.hero.name;
+        this.element.querySelector("p")!.innerText = `Powers: \n${this.hero.description}\n${this.hero.side === HeroSide.LIGHT ? "LIGHT" : "DARK"}`;
     }
 }

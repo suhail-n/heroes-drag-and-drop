@@ -1,23 +1,20 @@
 import { Bind } from '../decorators/bind.js';
 import { validator } from '../utils/validate.js';
-import { heroeState } from '../state/heroe.js';
-import { HeroeSide } from '../model/heroe.js';
+import { heroState } from '../state/hero.js';
+import { HeroSide } from '../model/hero.js';
 import { Component } from './base.js';
 
 
-export class HeroeForm extends Component<HTMLDivElement, HTMLFormElement>{
+export class HeroForm extends Component<HTMLDivElement, HTMLFormElement>{
     
-    // private hostEl: HTMLDivElement;
-    // private templateEl: HTMLTemplateElement;
-    // private element: HTMLFormElement;
-    private heroeNameEl: HTMLInputElement;
+    private heroNameEl: HTMLInputElement;
     private descriptionEl: HTMLTextAreaElement;
 
     constructor() {
-        super("heroe-input", "app", true);
+        super("hero-input", "app", true);
         
         // get input elements
-        this.heroeNameEl = <HTMLInputElement>this.element.querySelector("#heroe-name");
+        this.heroNameEl = <HTMLInputElement>this.element.querySelector("#hero-name");
         this.descriptionEl = <HTMLTextAreaElement>this.element.querySelector("#description");
         
         // execute init
@@ -35,34 +32,34 @@ export class HeroeForm extends Component<HTMLDivElement, HTMLFormElement>{
      * get form inputs and validate
      */
     getInputs(): {name: string, description: string} |  void{
-        const heroeName: string = this.heroeNameEl.value;
-        if(!validator({value: heroeName, minLength: 3, maxLength: 20})) {
-            alert("Heroe name must be greater than 3 and less than 20 charaters");
+        const heroName: string = this.heroNameEl.value;
+        if(!validator({value: heroName, minLength: 3, maxLength: 20})) {
+            alert("Hero name must be greater than 3 and less than 20 charaters");
             return
         }
         const description: string = this.descriptionEl.value;
         if(!validator({value: description, minLength: 5, maxLength: 100})) {
-            alert("Heroe Description must be greater than 5 and less than 100 charaters");
+            alert("Hero Description must be greater than 5 and less than 100 charaters");
             return
         }
         
-        return {name: heroeName, description: description}
+        return {name: heroName, description: description}
     }
 
     clearInputs() {
-        this.heroeNameEl.value = "";
+        this.heroNameEl.value = "";
         this.descriptionEl.value = "";
     }
 
     @Bind
     private onSubmitHandler(event: Event) {
         event.preventDefault()
-        const heroe = this.getInputs();
-        if(!heroe) {
+        const hero = this.getInputs();
+        if(!hero) {
             return;
         }
         this.clearInputs();
-        heroeState.addHeroe(heroe.name, heroe.description, HeroeSide.LIGHT);
+        heroState.addHeroe(hero.name, hero.description, HeroSide.LIGHT);
     }
 
     private centerElement() {

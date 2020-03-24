@@ -1,6 +1,6 @@
-import { HeroeForm } from './components/heroe-form.js';
-import { HeroeList } from './components/heroe-list.js';
+import { HeroForm } from './components/hero-form.js';
+import { HeroList } from './components/hero-list.js';
 
-new HeroeForm();
-new HeroeList("light");
-new HeroeList("dark");
+new HeroForm();
+new HeroList("light");
+new HeroList("dark");

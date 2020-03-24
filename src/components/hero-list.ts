@@ -1,17 +1,17 @@
-import { heroeState } from '../state/heroe.js';
-import { SingleHero } from './heroe-single.js';
-import { HeroeSide } from '../model/heroe.js';
-import { Heroe } from '../model/heroe.js';
+import { heroState } from '../state/hero.js';
+import { SingleHero } from './hero-single.js';
+import { HeroSide } from '../model/hero.js';
+import { Hero } from '../model/hero.js';
 import { Component } from './base.js';
 import { DragTarget } from '../model/drag-and-drop.js';
 import { Bind } from '../decorators/bind.js';
 
-export class HeroeList extends Component<HTMLDivElement, HTMLElement> implements DragTarget {
+export class HeroList extends Component<HTMLDivElement, HTMLElement> implements DragTarget {
 
     private ulElement: HTMLUListElement;
 
     constructor(private name: 'light' | 'dark') {
-        super("heroe-list", "app", false, name);
+        super("hero-list", "app", false, name);
         this.ulElement = <HTMLUListElement> this.element.querySelector("ul")!;
         this.render();
         this.onInit();
@@ -28,8 +28,8 @@ export class HeroeList extends Component<HTMLDivElement, HTMLElement> implements
     @Bind
     dropHandler(event: DragEvent): void {
         event.preventDefault();
-        const heroeId: string = event.dataTransfer!.getData("text");
-        this.flipHeroeSide(heroeId);
+        const heroId: string = event.dataTransfer!.getData("text");
+        this.flipHeroeSide(heroId);
         this.ulElement.classList.remove("dragging");
         
     }
@@ -40,12 +40,12 @@ export class HeroeList extends Component<HTMLDivElement, HTMLElement> implements
         this.ulElement.classList.remove("dragging");
     }
 
-    flipHeroeSide(heroeId: string) {
-        const foundHeroe = heroeState.heroes.find(heroe => heroe.id === heroeId);
-        const currentSide = foundHeroe!.side === HeroeSide.LIGHT ? 'light' : 'dark'
+    flipHeroeSide(heroId: string) {
+        const foundHeroe = heroState.heroes.find(hero => hero.id === heroId);
+        const currentSide = foundHeroe!.side === HeroSide.LIGHT ? 'light' : 'dark'
         if (foundHeroe && currentSide !== this.name) {
-            foundHeroe!.side = foundHeroe!.side === HeroeSide.LIGHT ? HeroeSide.DARK : HeroeSide.LIGHT;
-            heroeState.updateHeroe(foundHeroe);
+            foundHeroe!.side = foundHeroe!.side === HeroSide.LIGHT ? HeroSide.DARK : HeroSide.LIGHT;
+            heroState.updateHeroe(foundHeroe);
         }
 
     }
@@ -57,14 +57,14 @@ export class HeroeList extends Component<HTMLDivElement, HTMLElement> implements
         this.element.addEventListener("drop", this.dropHandler);
 
         // add listener
-        const side: HeroeSide = this.name === 'light' ? HeroeSide.LIGHT : HeroeSide.DARK;
+        const side: HeroSide = this.name === 'light' ? HeroSide.LIGHT : HeroSide.DARK;
 
-        heroeState.addListener((heroes: Heroe[]) => {
+        heroState.addListener((heroes: Hero[]) => {
             // empty ul element
             const ulEle = this.element.querySelector("ul")!;
             ulEle.innerHTML = '';
             console.log("UL ID: " + ulEle.id);
-            heroes.map((heroe: Heroe) => heroe.side === side ? new SingleHero(ulEle.id, heroe) : null  );
+            heroes.map((hero: Hero) => hero.side === side ? new SingleHero(ulEle.id, hero) : null  );
         });
     }
     

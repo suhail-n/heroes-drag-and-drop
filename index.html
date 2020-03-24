@@ -5,25 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heroes</title>
   <link rel="stylesheet" href="app.css" />
-  <script type="module" src="dist/app.js"></script>
+  <script type="module" src="dist/app.js" defer></script>
 </head>
 <body>
    <!-- hero form -->
-   <template id="heroe-input">
+   <template id="hero-input">
     <form id="form-input">
       <div class="form-control">
-        <label for="heroe-name">Name of Heroe</label>
-        <input type="text" id="heroe-name" />
+        <label for="hero-name">Name of Hero</label>
+        <input type="text" id="hero-name" />
       </div>
       <div class="form-control">
         <label for="description">Description</label>
         <textarea id="description" rows="3"></textarea>
       </div>
-      <button type="submit">ADD HEROE</button>
+      <button type="submit">ADD HERO</button>
     </form>
   </template>
-  <!-- heroe list -->
-  <template id="heroe-list">
+  <!-- hero list -->
+  <template id="hero-list">
     <section class="heroes">
       <header>
         <h2></h2>
@@ -32,7 +32,7 @@
     </section>
   </template>
   <!-- single hero items -->
-  <template id="single-heroe">
+  <template id="single-hero">
     <li draggable="true">
       <h3></h3>
       <p></p>
