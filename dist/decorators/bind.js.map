@@ -1,0 +1,1 @@
+{"version":3,"file":"bind.js","sourceRoot":"","sources":["../../src/decorators/bind.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,IAAI,CAAC,CAAM,EAAE,EAAU,EAAE,kBAAsC;IAC3E,OAAO;QACH,YAAY,EAAE,IAAI;QAClB,GAAG;YAGC,OAAO,kBAAkB,CAAC,KAAK,CAAC,IAAI,CAAC,IAAI,CAAC,CAAA;QAC9C,CAAC;KACJ,CAAA;AACL,CAAC"}
