@@ -1,0 +1,112 @@
+
+body {
+    background-color: #f4f4f4;
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6em;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+#form-input {
+    margin: 1rem;
+    padding: 1rem;
+    /* border: 1px solid red; */
+    -webkit-box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+    box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 30rem;
+    padding: 0.3rem 0.4rem;
+    border: 2px solid lightgrey;
+}
+
+#main-header {
+    background-color: #1976d2;
+    margin: 0;
+    color:#fff;
+}
+
+#heroe-form label, #heroe-form input {
+    display: block;
+}
+label {
+    font-weight: bold;
+}
+label, input, textarea {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+button[type='submit'] {
+    border: none;
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 2rem;
+    background-color: #1976d2;
+    color: #fff;
+    font: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    -webkit-box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+    box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+}
+
+
+/* Heroes */
+
+.heroes {
+    margin: 1rem;
+}
+
+.heroes header {
+    display: flex;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #1976d2;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroes#dark header {
+    background-color: red;
+}
+
+.heroes ul {
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+}
+.heroes li {
+    background-color: mintcream;
+    -webkit-box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+    box-shadow: 7px 9px 15px -7px rgba(0,0,0,0.75);
+    margin: 1em;
+    padding: 1rem;
+    
+}
+.dragging {
+    background: #e1e9fb;
+}
+li.dragging {
+    /* border: dotted;
+    opacity: 0.6; */
+    transition: 0.5s ease;
+    -webkit-filter: blur(5px);
+}
+
+#dark .dragging  {
+    background: #fde4ef;
+}
